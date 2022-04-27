@@ -11,7 +11,6 @@ class HomeScreenBody extends StatefulWidget {
 }
 
 class _HomeScreenBodyState extends State<HomeScreenBody> {
-  @override
   late final INetworkManager _networkManager;
   List<PostModel?> _users = [];
   @override
@@ -27,13 +26,14 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
       _users.add(post);
     }
   }
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: ListView.builder(
         itemCount: _users.length,
         itemBuilder: (BuildContext context,int index){
           return Card(
-            child: Image(image: NetworkImage(_users[index]?.results?.first.picture?.medium ?? "https://static.remove.bg/remove-bg-web/a8b5118d623a6b3f4b7813a78c686de384352145/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png")),
+            child: Image(image: NetworkImage(_users[index]?.results?.first.picture?.large ?? "https://static.remove.bg/remove-bg-web/a8b5118d623a6b3f4b7813a78c686de384352145/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png")),
           );
         },
       ),
