@@ -25,7 +25,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
   }
   Future <void> _fetchUserInfo() async{
     late PostModel? post;
-    for(int i = 0; i< 15;i++){
+    for(int i = 0; i< 20;i++){
       post = await _networkManager.fetchUserInfo();
       _users.add(post);
     }
@@ -37,11 +37,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
         itemCount: _users.length,
         itemBuilder: (BuildContext context,int index){
           return UserCard(
-              imageUrl: _users[index]?.results?.first.picture?.medium ?? "alpern",
-              userName: _users[index]?.results?.first.gender ?? "alperen", 
-              name: _users[index]?.results?.first.name?.first ?? "alperen", 
-              followerNumber:  12, 
-              uploadNumber: 4000
+              user: _users[index] ?? PostModel(),
             );
         },
       ),
